@@ -34,7 +34,16 @@ if __name__ == '__main__':
         reentry_register=True,
         install_requires=[
             'aiida-core',
+            'aiida-tools',
+            'pymatgen',
         ],
         extras_require={'test': ['aiida-pytest', 'pytest']},
-        entry_points={},
+        entry_points={
+            'aiida.calculations': [
+                'symmetry_representation.filter_symmetries = aiida_symmetry_representation.calculations.filter_symmetries:FilterSymmetriesCalculation',
+            ],
+            'aiida.parsers': [
+                'symmetry_representation.symmetry = aiida_symmetry_representation.parsers.symmetries:SymmetriesParser',
+            ],
+        },
     )
