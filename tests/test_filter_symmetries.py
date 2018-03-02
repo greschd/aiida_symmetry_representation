@@ -8,27 +8,27 @@ import numpy as np
 import pymatgen as mg
 
 @pytest.fixture(params=['POSCAR', 'POSCAR_110_bi_0.04'])
-def filter_symmetries_inputs(request, sample, get_process_inputs):
+def filter_symmetries_inputs(request, sample, get_process_builder):
     from aiida.orm import DataFactory
 
-    process, inputs = get_process_inputs(
+    builder = get_process_builder(
         calculation_string='symmetry_representation.filter_symmetries',
         code_string='symmetry_repr'
     )
 
-    inputs.symmetries = DataFactory('singlefile')(file=sample('symmetries.hdf5'))
+    builder.symmetries = DataFactory('singlefile')(file=sample('symmetries.hdf5'))
 
     structure = DataFactory('structure')()
     structure.set_pymatgen_structure(
         mg.Structure.from_file(sample(request.param))
     )
-    inputs.structure = structure
-    return process, inputs
+    builder.structure = structure
+    return builder
 
 def test_filter_symmetries(configure_with_daemon, filter_symmetries_inputs):
     from aiida.work.run import run
 
-    process, inputs = filter_symmetries_inputs
-    output = run(process, **inputs)
+    builder = filter_symmetries_inputs
+    output = run(builder)
 
     assert 'symmetries' in output
