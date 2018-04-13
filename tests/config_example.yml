@@ -5,6 +5,7 @@ computers:
     transport: local
     scheduler: direct
     work_directory: /tmp/test_aiida_symmetry_representation_run
+    prepend_text: 'unset PYTHONPATH'
 
 codes:
   symmetry_repr:
