@@ -1,3 +1,4 @@
+from fsc.export import export
 from pymatgen.io.cif import CifWriter
 
 from aiida_tools import get_input_validator
@@ -7,7 +8,13 @@ from aiida.orm.code import Code
 from aiida.common.utils import classproperty
 from aiida.common.datastructures import CalcInfo, CodeInfo
 
+
+@export
 class FilterSymmetriesCalculation(JobCalculation):
+    """
+    Calculation class to run the ``symmetry-repr filter_symmetries`` command.
+    """
+
     def _init_internal_params(self):
         super(FilterSymmetriesCalculation, self)._init_internal_params()
 
@@ -27,7 +34,8 @@ class FilterSymmetriesCalculation(JobCalculation):
             valid_types=DataFactory('structure'),
             additional_parameter=None,
             linkname='structure',
-            docstring="Structure with which the filtered symmetries should be compatible."
+            docstring=
+            "Structure with which the filtered symmetries should be compatible."
         )
         return retdict
 
@@ -40,24 +48,29 @@ class FilterSymmetriesCalculation(JobCalculation):
         CifWriter(struct=structure.get_pymatgen()).write_file(struc_file)
 
         symmetries_filename = 'symmetries.hdf5'
-        local_symmetries_file = validate('symmetries', valid_types=DataFactory('singlefile'))
+        local_symmetries_file = validate(
+            'symmetries', valid_types=DataFactory('singlefile')
+        )
 
         code = validate('code', valid_types=Code)
         if inputdict:
-            raise ValidationError('Cannot add other nodes. Remaining input: {}'.format(inputdict))
+            raise ValidationError(
+                'Cannot add other nodes. Remaining input: {}'.
+                format(inputdict)
+            )
 
         calcinfo = CalcInfo()
         calcinfo.uuid = self.uuid
         calcinfo.remote_copy_list = []
-        calcinfo.local_copy_list = [(local_symmetries_file.get_file_abs_path(), symmetries_filename)]
+        calcinfo.local_copy_list = [
+            (local_symmetries_file.get_file_abs_path(), symmetries_filename)
+        ]
         calcinfo.retrieve_list = [self._OUTPUT_FILE_NAME]
 
         codeinfo = CodeInfo()
         codeinfo.cmdline_params = [
-            'filter_symmetries',
-            '-s', symmetries_filename,
-            '-l', struc_filename,
-            '-o', self._OUTPUT_FILE_NAME
+            'filter_symmetries', '-s', symmetries_filename, '-l',
+            struc_filename, '-o', self._OUTPUT_FILE_NAME
         ]
         codeinfo.stdout_name = self._OUTPUT_FILE_NAME
         codeinfo.code_uuid = code.uuid
