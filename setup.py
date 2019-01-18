@@ -31,7 +31,8 @@ if __name__ == '__main__':
         install_requires=[
             'aiida-core',
             'aiida-tools',
-            'pymatgen',
+            'pymatgen<2019;python_version<"3"',
+            'pymatgen;python_version>="3"',
             'fsc.export',
         ],
         extras_require={'test': ['aiida-pytest', 'pytest']},
