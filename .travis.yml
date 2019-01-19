@@ -26,7 +26,7 @@ install:
   - pip install git+https://github.com/aiidateam/aiida_core.git#egg=aiida_core
   - pip install git+https://github.com/greschd/aiida-tools#egg=aiida_tools
   - pip install git+https://github.com/greschd/aiida_pytest@develop#egg=aiida_pytest
-  - pip install .[test]
+  - pip install .[test,pre-commit]
 env:
   - TEST_TYPE="pre-commit"
   - TEST_TYPE="tests"

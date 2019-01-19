@@ -38,7 +38,10 @@ if __name__ == '__main__':
             'pymatgen;python_version>="3"',
             'fsc.export',
         ],
-        extras_require={'test': ['aiida-pytest', 'pytest']},
+        extras_require={
+            'test': ['aiida-pytest', 'pytest'],
+            'pre-commit': ['yapf==0.25', 'pre-commit']
+        },
         entry_points={
             'aiida.calculations': [
                 'symmetry_representation.filter_symmetries = aiida_symmetry_representation.calculations.filter_symmetries:FilterSymmetriesCalculation',
