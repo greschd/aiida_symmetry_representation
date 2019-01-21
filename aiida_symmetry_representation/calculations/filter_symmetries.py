@@ -18,6 +18,13 @@ from aiida.common.datastructures import CalcInfo, CodeInfo
 class FilterSymmetriesCalculation(JobCalculation):
     """
     Calculation class to run the ``symmetry-repr filter_symmetries`` command.
+
+    Arguments
+    ---------
+    symmetries : aiida.orm.data.singlefile.SinglefileData
+        Set of all symmetries which are tested, in ``symmetry-representation`` HDF5 format.
+    structure : aiida.orm.data.structure.StructureData
+        Structure for which the compatibility of the symmetries is tested.
     """
 
     def _init_internal_params(self):

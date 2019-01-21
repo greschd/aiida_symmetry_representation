@@ -12,7 +12,12 @@ from aiida.parsers.parser import Parser
 @export
 class SymmetriesParser(Parser):
     """
-    Parses a symmetries file to a :class:`SinglefileData` node.
+    Parses a symmetries file to an output file in ``symmetry-representation`` HDF5 format.
+
+    Returns
+    -------
+    symmetries : aiida.orm.data.singlefile.SinglefileData
+        Output symmetries file.
     """
 
     def parse_with_retrieved(self, retrieved):
