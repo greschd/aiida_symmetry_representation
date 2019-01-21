@@ -18,12 +18,14 @@ if __name__ == '__main__':
         description='AiiDA Plugin for symmetry representations.',
         author='Dominik Gresch',
         author_email='greschd@gmx.ch',
-        license='MIT',
+        url='https://aiida-symmetry-representation.readthedocs.io',
+        license='Apache 2.0',
         classifiers=[
             'Development Status :: 3 - Alpha', 'Environment :: Plugins',
             'Framework :: AiiDA', 'Intended Audience :: Science/Research',
             'License :: OSI Approved :: Apache Software License',
             'Programming Language :: Python :: 2.7',
+            'Programming Language :: Python :: 3.6',
             'Topic :: Scientific/Engineering :: Physics'
         ],
         keywords='symmetry representation aiida workflow',
