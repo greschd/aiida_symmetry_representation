@@ -7,7 +7,6 @@ import sys, os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), os.pardir))
 
-
 os.environ['DJANGO_SETTINGS_MODULE'] = 'rtd_settings'
 
 import aiida
@@ -45,8 +44,12 @@ import aiida_symmetry_representation
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode', 'aiida.sphinxext', 'sphinx.ext.napoleon',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.viewcode',
+    'aiida.sphinxext',
+    'sphinx.ext.napoleon',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
