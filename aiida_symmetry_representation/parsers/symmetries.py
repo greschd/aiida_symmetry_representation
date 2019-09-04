@@ -29,15 +29,13 @@ class SymmetriesParser(Parser):
             self.logger.error("No retrieved folder found")
             raise e
 
-        print(self.__dict__)
-
-        self.out(
-            'symmetries',
-            DataFactory('singlefile')(
-                # Note: If we want to extend this to other calculations which might not
-                # use the same output file name, it might be better to pass the filename
-                # through the 'options' inputs.
-                file=out_folder.
-                open(FilterSymmetriesCalculation._OUTPUT_FILE_NAME, 'rb')
+        # Note: If we want to extend this to other calculations which might not
+        # use the same output file name, it might be better to pass the filename
+        # through the 'options' inputs.
+        with (
+            out_folder.open(
+                FilterSymmetriesCalculation._OUTPUT_FILE_NAME, 'rb'
             )
-        )
+        ) as handle:
+            sym_file = DataFactory('singlefile')(file=handle)
+        self.out('symmetries', sym_file)
