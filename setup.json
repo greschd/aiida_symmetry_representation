@@ -25,7 +25,8 @@
     "aiida-tools",
     "pymatgen<2019;python_version<\"3\"",
     "pymatgen;python_version>=\"3\"",
-    "fsc.export"
+    "fsc.export",
+    "six"
   ],
   "extras_require": {
     "test": [
