@@ -5,7 +5,7 @@ python:
   - "3.7"
 cache: pip
 sudo: true
-dist: xenial
+dist: bionic
 services:
   - postgresql
   - rabbitmq
