@@ -21,7 +21,6 @@ addons:
       - python3-h5py
 before_install:
   - sudo pip3 install -U pip setuptools
-  - sudo pip3 install -U scipy decorator
   - sudo pip3 install symmetry-representation
 install:
   - pip install -U 'pip<19' wheel setuptools
