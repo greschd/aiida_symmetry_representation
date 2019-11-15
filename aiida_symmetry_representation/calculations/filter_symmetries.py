@@ -17,13 +17,6 @@ from aiida.common import CalcInfo, CodeInfo
 class FilterSymmetriesCalculation(CalcJob):
     """
     Calculation class to run the ``symmetry-repr filter_symmetries`` command.
-
-    Arguments
-    ---------
-    symmetries : aiida.orm.nodes.data.singlefile.SinglefileData
-        Set of all symmetries which are tested, in ``symmetry-representation`` HDF5 format.
-    structure : aiida.orm.nodes.data.structure.StructureData
-        Structure for which the compatibility of the symmetries is tested.
     """
 
     _OUTPUT_FILE_NAME = 'symmetries_out.hdf5'
