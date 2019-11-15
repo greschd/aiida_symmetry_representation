@@ -38,7 +38,8 @@
     ],
     "docs": [
       "sphinx",
-      "sphinx-rtd-theme"
+      "sphinx-rtd-theme",
+      "sphinxcontrib-details-directive==0.1.0; python_version>='3.0'"
     ],
     "dev_precommit": [
       "yapf==0.28",
