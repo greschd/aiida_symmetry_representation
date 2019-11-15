@@ -22,9 +22,9 @@ class FilterSymmetriesCalculation(CalcJob):
 
     Arguments
     ---------
-    symmetries : aiida.orm.data.singlefile.SinglefileData
+    symmetries : aiida.orm.nodes.data.singlefile.SinglefileData
         Set of all symmetries which are tested, in ``symmetry-representation`` HDF5 format.
-    structure : aiida.orm.data.structure.StructureData
+    structure : aiida.orm.nodes.data.structure.StructureData
         Structure for which the compatibility of the symmetries is tested.
     """
 

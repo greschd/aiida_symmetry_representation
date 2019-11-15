@@ -18,10 +18,9 @@ class SymmetriesParser(Parser):
 
     Returns
     -------
-    symmetries : aiida.orm.data.singlefile.SinglefileData
+    symmetries : aiida.orm.nodes.data.singlefile.SinglefileData
         Output symmetries file.
     """
-
     def parse(self, **kwargs):
         try:
             out_folder = self.retrieved

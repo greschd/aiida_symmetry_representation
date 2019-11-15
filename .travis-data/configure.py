@@ -12,9 +12,8 @@ from os.path import join
 
 
 def get_path(codename):
-    return subprocess.check_output(
-        'which {}'.format(codename), shell=True
-    ).decode().strip()
+    return subprocess.check_output('which {}'.format(codename),
+                                   shell=True).decode().strip()
 
 
 symmetry_repr_path = get_path('symmetry-repr')
