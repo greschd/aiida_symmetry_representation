@@ -8,7 +8,6 @@ Usage: python configure.py config_input_file config_output_file
 
 import sys
 import subprocess
-from os.path import join
 
 
 def get_path(codename):

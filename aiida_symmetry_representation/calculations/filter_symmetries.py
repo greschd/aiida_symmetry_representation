@@ -10,8 +10,6 @@ from pymatgen.io.cif import CifWriter
 
 from aiida.engine import CalcJob
 from aiida.plugins import DataFactory
-from aiida.orm import Code
-from aiida.common.utils import classproperty
 from aiida.common import CalcInfo, CodeInfo
 
 
@@ -52,9 +50,14 @@ class FilterSymmetriesCalculation(CalcJob):
             default='symmetry_representation.symmetry'
         )
 
-        spec.output('symmetries', valid_type=DataFactory('singlefile'))
+        spec.output(
+            'symmetries',
+            valid_type=DataFactory('singlefile'),
+            help=
+            'The HDF5 file containing the symmetries which are compatible with the structure.'
+        )
 
-    def prepare_for_submission(self, tempfolder):
+    def prepare_for_submission(self, tempfolder):  # pylint: disable=arguments-differ
 
         struc_filename = 'lattice.cif'
 

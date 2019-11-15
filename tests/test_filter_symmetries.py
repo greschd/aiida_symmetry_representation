@@ -7,7 +7,6 @@
 from __future__ import division, unicode_literals
 
 import pytest
-import numpy as np
 import pymatgen as mg
 
 
@@ -32,7 +31,7 @@ def filter_symmetries_inputs(request, sample, get_process_builder):
     return builder
 
 
-def test_filter_symmetries(configure_with_daemon, filter_symmetries_inputs):
+def test_filter_symmetries(configure_with_daemon, filter_symmetries_inputs):  # pylint: disable=unused-argument
     from aiida.engine import run
 
     builder = filter_symmetries_inputs

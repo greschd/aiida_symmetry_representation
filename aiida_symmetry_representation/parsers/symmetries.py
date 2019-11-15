@@ -33,7 +33,8 @@ class SymmetriesParser(Parser):
         # through the 'options' inputs.
         with (
             out_folder.open(
-                FilterSymmetriesCalculation._OUTPUT_FILE_NAME, 'rb'
+                FilterSymmetriesCalculation._OUTPUT_FILE_NAME,  # pylint: disable=protected-access
+                'rb'
             )
         ) as handle:
             sym_file = DataFactory('singlefile')(file=handle)
