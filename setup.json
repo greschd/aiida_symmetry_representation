@@ -26,8 +26,9 @@
   "install_requires": [
     "aiida-core>=1.0.0",
     "aiida-tools>=0.2.0",
-    "pymatgen<2019;python_version<\"3\"",
-    "pymatgen;python_version>=\"3\"",
+    "pymatgen<2019;python_version<'3'",
+    "pymatgen;python_version>='3'",
+    "monty<3;python_version<'3'",
     "fsc.export",
     "six"
   ],
