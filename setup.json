@@ -1,6 +1,6 @@
 {
   "name": "aiida-symmetry-representation",
-  "version": "0.2.0b1",
+  "version": "0.2.0",
   "description": "AiiDA Plugin for symmetry representations.",
   "author": "Dominik Gresch",
   "author_email": "greschd@gmx.ch",
