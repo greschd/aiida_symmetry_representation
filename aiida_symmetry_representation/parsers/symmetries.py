@@ -5,8 +5,10 @@
 
 from fsc.export import export
 
-from aiida.orm import DataFactory
+from aiida.plugins import DataFactory
 from aiida.parsers.parser import Parser
+
+from ..calculations.filter_symmetries import FilterSymmetriesCalculation
 
 
 @export
@@ -16,21 +18,24 @@ class SymmetriesParser(Parser):
 
     Returns
     -------
-    symmetries : aiida.orm.data.singlefile.SinglefileData
+    symmetries : aiida.orm.nodes.data.singlefile.SinglefileData
         Output symmetries file.
     """
-
-    def parse_with_retrieved(self, retrieved):
+    def parse(self, **kwargs):
         try:
-            out_folder = retrieved[self._calc._get_linkname_retrieved()]
+            out_folder = self.retrieved
         except KeyError as e:
             self.logger.error("No retrieved folder found")
             raise e
 
-        new_nodes_list = [(
-            'symmetries', DataFactory('singlefile')(
-                file=out_folder.get_abs_path(self._calc._OUTPUT_FILE_NAME)
+        # Note: If we want to extend this to other calculations which might not
+        # use the same output file name, it might be better to pass the filename
+        # through the 'options' inputs.
+        with (
+            out_folder.open(
+                FilterSymmetriesCalculation._OUTPUT_FILE_NAME,  # pylint: disable=protected-access
+                'rb'
             )
-        )]
-
-        return True, new_nodes_list
+        ) as handle:
+            sym_file = DataFactory('singlefile')(file=handle)
+        self.out('symmetries', sym_file)

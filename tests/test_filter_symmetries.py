@@ -7,13 +7,12 @@
 from __future__ import division, unicode_literals
 
 import pytest
-import numpy as np
 import pymatgen as mg
 
 
 @pytest.fixture(params=['POSCAR', 'POSCAR_110_bi_0.04'])
 def filter_symmetries_inputs(request, sample, get_process_builder):
-    from aiida.orm import DataFactory
+    from aiida.plugins import DataFactory
 
     builder = get_process_builder(
         calculation_string='symmetry_representation.filter_symmetries',
@@ -32,8 +31,8 @@ def filter_symmetries_inputs(request, sample, get_process_builder):
     return builder
 
 
-def test_filter_symmetries(configure_with_daemon, filter_symmetries_inputs):
-    from aiida.work.run import run
+def test_filter_symmetries(configure_with_daemon, filter_symmetries_inputs):  # pylint: disable=unused-argument
+    from aiida.engine import run
 
     builder = filter_symmetries_inputs
     output = run(builder)

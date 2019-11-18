@@ -1,6 +1,7 @@
+__pycache__
 *.pyc
 *.egg*
-__pycache__
 .cache
 .pytest_cache
 dist
+.vscode

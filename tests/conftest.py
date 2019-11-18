@@ -3,4 +3,4 @@
 # © 2017-2019, ETH Zurich, Institut für Theoretische Physik
 # Author: Dominik Gresch <greschd@gmx.ch>
 
-from aiida_pytest import *
+pytest_plugins = ['aiida.manage.tests.pytest_fixtures', 'aiida_pytest']  # pylint: disable=invalid-name

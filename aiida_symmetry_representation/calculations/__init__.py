@@ -4,3 +4,5 @@
 # Author: Dominik Gresch <greschd@gmx.ch>
 
 from . import filter_symmetries
+
+__all__ = ['filter_symmetries']
