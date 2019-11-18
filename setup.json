@@ -11,7 +11,7 @@
     "Environment :: Plugins",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: Apache Software License",
-    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Topic :: Scientific/Engineering :: Physics",
@@ -26,11 +26,8 @@
   "install_requires": [
     "aiida-core>=1.0.0",
     "aiida-tools>=0.2.0",
-    "pymatgen<2019;python_version<'3'",
-    "pymatgen;python_version>='3'",
-    "monty<3;python_version<'3'",
-    "fsc.export",
-    "six"
+    "pymatgen",
+    "fsc.export"
   ],
   "extras_require": {
     "testing": [
@@ -40,7 +37,7 @@
     "docs": [
       "sphinx",
       "sphinx-rtd-theme",
-      "sphinxcontrib-details-directive==0.1.0; python_version>='3.0'"
+      "sphinxcontrib-details-directive==0.1.0"
     ],
     "dev_precommit": [
       "yapf==0.28",

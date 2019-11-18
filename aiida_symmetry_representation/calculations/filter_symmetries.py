@@ -3,8 +3,6 @@
 # © 2017-2019, ETH Zurich, Institut für Theoretische Physik
 # Author: Dominik Gresch <greschd@gmx.ch>
 
-import six
-
 from fsc.export import export
 from pymatgen.io.cif import CifWriter
 
@@ -39,7 +37,7 @@ class FilterSymmetriesCalculation(CalcJob):
 
         spec.input(
             'metadata.options.parser_name',
-            valid_type=six.string_types,
+            valid_type=str,
             default='symmetry_representation.symmetry'
         )
 
